@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>React Intro</title>
+	<script src="react.development.js"></script>
+	<script src="react-dom.development.js"></script>
+	<script>
+		function onBtnRenderDOMClick(){
+			var h1Ele = document.getElementById('heading-1');
+			h1Ele.innerText = 'Welcome to React.js!'
+		}
+
+		function onBtnRenderReactClick(){
+			var h1Ele = React.createElement('h1', { id : 'heading-1' }, 'Welcome to React.js!')
+			var main = document.getElementById('section-react');
+			ReactDOM.render(h1Ele, main);
+		}
+
+		function init(){
+			var btnRenderDOM = document.getElementById('btnRenderDOM');
+			btnRenderDOM.addEventListener('click', onBtnRenderDOMClick);
+
+			var btnRenderReact = document.getElementById('btnRenderReact');
+			btnRenderReact.addEventListener('click', onBtnRenderReactClick);
+		}
+
+		window.addEventListener('load', init);
+	</script>
+</head>
+<body>
+	<input type="button" value="Render - DOM" id="btnRenderDOM">
+	<section id="section-dom">
+		<h1 id="heading-1"></h1>
+	</section>
+	<input type="button" value="Render - React" id="btnRenderReact">
+	<section id="section-react"></section>
+</body>
+</html>
