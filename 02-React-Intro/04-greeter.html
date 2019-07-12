@@ -6,6 +6,11 @@
 	<script src="react.development.js"></script>
 	<script src="react-dom.development.js"></script>
 	<script src="babel.min.js"></script>
+	<style>
+		.highlight{
+			color : red;
+		}
+	</style>
 	<script type="text/babel">
 		class Greeter extends React.Component{
 			
@@ -15,7 +20,8 @@
 			};
 
 			onBtnGreetClick = () => {
-				this.setState({ message : `Hi ${this.state.userName}, Have a nice day!`});
+				console.log(this.props);
+				this.setState({ message : `Hi ${this.state.userName}, ${this.props.msg}`});
 			}
 
 			onTxtUserNameChange = (evt) => {
@@ -31,13 +37,14 @@
 						<label htmlFor="">User Name :</label>
 						<input type="text" onChange={this.onTxtUserNameChange} />
 						<input type="button" value="Greet" onClick={this.onBtnGreetClick} />
-						<div>{this.state.message}</div>
+						<div className="highlight">{this.state.message}</div>
 					</div>
 				)
 			}
 		}
 
-		ReactDOM.render(React.createElement(Greeter),
+		let msg = `Have a good day!`;
+		ReactDOM.render(<Greeter msg={msg} abc="100" xyz="200"/>,
 			document.getElementById('root'));
 	</script>
 </head>
