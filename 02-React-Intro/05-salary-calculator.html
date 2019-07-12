@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Salary Calculator</title>
+	<style>
+		body{
+			margin: 50px;
+		}
+		.field{
+			margin-bottom: 10px;
+		}
+		label{
+			display: block;
+		}
+		td{
+			padding: 10px;
+			font-size: 18pt;
+		}
+		.poorSalary{
+			color : red;
+		}
+		.goodSalary{
+			color : green;
+		}
+	</style>
+	<script src="react.development.js"></script>
+	<script src="react-dom.development.js"></script>
+	<script src="babel.min.js"></script>
+	<script type="text/babel">
+		class SalaryCalculator extends React.Component{
+			state = {
+				basic : 0,
+				hra : 0,
+				da  : 0,
+				tax : 0,
+				salary : 0
+			};
+
+			onCalculateClick = () => {
+				let { basic, hra, da, tax } = this.state;
+				let gross = basic + hra + da;
+				let net = gross * ((100-tax)/100);
+				this.setState({salary : net});
+			}
+			render(){
+				let data = this.state;
+				return(
+					<div>
+						<h1>Salary Calculator</h1>
+						<hr/>
+						<SalaryCalculatorInput labelText="Basic :" onValueChange={value => this.setState({basic : value})} />
+						<SalaryCalculatorInput labelText="HRA :" onValueChange={value => this.setState({hra : value})} />
+						<SalaryCalculatorInput labelText="DA :" onValueChange={value => this.setState({da : value})} />
+						<SalaryCalculatorInput labelText="Tax :" onValueChange={value => this.setState({tax : value})} type="range" min="0" max="30" defaultValue="0" />
+						<div className="field">
+							<input type="button" value="Calculate" onClick={this.onCalculateClick}/>
+						</div>
+						<SalaryCalculatorResult data={data}/>
+					</div>
+				)
+			}
+		}
+
+		class SalaryCalculatorInput extends React.Component{
+			render(){
+				let { labelText, onValueChange, type='number', ...attrs } = this.props;
+				return(
+					<div className="field">
+						<label htmlFor="">{labelText}</label>
+						<input type={type} onChange={evt => onValueChange(parseInt(evt.target.value))} {...attrs} />
+					</div>
+				)
+			}
+		}
+
+		class SalaryCalculatorResult extends React.Component{
+			render(){
+				let {basic, hra, da, tax, salary} = this.props.data;
+				return(
+					<div className="field">
+						<table>
+							<tbody>
+								<tr>
+									<td>{basic}</td>
+									<td>{hra}</td>
+									<td>{da}</td>
+									<td>{tax}</td>
+									{
+										salary < 10000 ? (<td className="poorSalary">{salary}</td>) : (<td className="goodSalary">{salary}</td>)
+									}
+									
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				)
+			}
+		}
+
+		ReactDOM.render(<SalaryCalculator />,
+			document.getElementById('root'));
+
+	</script>
+</head>
+<body>
+	<div id="root">
+		
+	</div>
+</body>
+</html>
