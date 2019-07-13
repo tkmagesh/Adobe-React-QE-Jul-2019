@@ -8,7 +8,6 @@ class Greeter extends React.Component{
 	};
 
 	onBtnGreetClick = () => {
-		console.log(this.props);
 		this.setState({ message : `Hi ${this.state.userName}, ${this.props.msg}`});
 	}
 
@@ -22,6 +21,7 @@ class Greeter extends React.Component{
 			<div>
 				<h1>Greeter</h1>
 				<hr/>
+				<br/>
 				<label htmlFor="">User Name :</label>
 				<input type="text" onChange={this.onTxtUserNameChange} />
 				<input type="button" value="Greet" onClick={this.onBtnGreetClick} />

@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Greeter Component should display the greet message 1`] = `
+<div>
+  <h1>
+    Greeter
+  </h1>
+  <hr />
+  <br />
+  <label
+    htmlFor=""
+  >
+    User Name :
+  </label>
+  <input
+    onChange={[Function]}
+    type="text"
+  />
+  <input
+    onClick={[Function]}
+    type="button"
+    value="Greet"
+  />
+  <div
+    className="highlight"
+  >
+    Hi Magesh, Have a nice day
+  </div>
+</div>
+`;
+
+exports[`Greeter Component should match the snapshot 1`] = `
+<div>
+  <h1>
+    Greeter
+  </h1>
+  <hr />
+  <br />
+  <label
+    htmlFor=""
+  >
+    User Name :
+  </label>
+  <input
+    onChange={[Function]}
+    type="text"
+  />
+  <input
+    onClick={[Function]}
+    type="button"
+    value="Greet"
+  />
+  <div
+    className="highlight"
+  >
+    [Dummy message]
+  </div>
+</div>
+`;
+
+exports[`Greeter Component should update the state with the greet message 1`] = `
+<div>
+  <h1>
+    Greeter
+  </h1>
+  <hr />
+  <br />
+  <label
+    htmlFor=""
+  >
+    User Name :
+  </label>
+  <input
+    onChange={[Function]}
+    type="text"
+  />
+  <input
+    onClick={[Function]}
+    type="button"
+    value="Greet"
+  />
+  <div
+    className="highlight"
+  >
+    Hi Magesh, Have a nice day
+  </div>
+</div>
+`;
