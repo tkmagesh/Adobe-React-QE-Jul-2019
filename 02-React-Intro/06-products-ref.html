@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Products</title>
+	<script src="react.development.js"></script>
+	<script src="react-dom.development.js"></script>
+	<script src="babel.min.js"></script>
+	<script type="text/babel">
+		class Products extends React.Component{
+			state = { productNames : [], newProductName : '' };
+			
+			txtProductNameRef = React.createRef();
+
+			render(){
+				let { productNames } = this.state;
+				let productItems = productNames.map((productName, index) => (<li key={index}>{productName}</li>));
+				console.dir(this.txtProductNameRef);
+				return(
+					<div>
+						<h1>Products</h1>
+						<hr/>
+						<label>Product Name :</label>
+						<input type="text" ref={this.txtProductNameRef} />
+						<input type="button" value="Add New" onClick={ evt => this.setState({ productNames : [...productNames, this.txtProductNameRef.current.value]})}/>
+						<ol>
+							{productItems}
+						</ol>
+					</div>
+				)
+			}
+		}
+
+		ReactDOM.render(<Products/>,
+			document.getElementById('root'));
+	</script>
+</head>
+<body>
+	<div id="root"></div>
+	
+</body>
+</html>
