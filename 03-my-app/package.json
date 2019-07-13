@@ -2,6 +2,9 @@
   "name": "03-my-app",
   "version": "0.1.0",
   "private": true,
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
+  },
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
