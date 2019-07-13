@@ -17,7 +17,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "reset-snapshot": "react-scripts test --updateSnapshot"
+    "reset-snapshot": "react-scripts test --updateSnapshot",
+    "e2e" : "wdio wdio.conf.js"
   },
   "eslintConfig": {
     "extends": "react-app"
